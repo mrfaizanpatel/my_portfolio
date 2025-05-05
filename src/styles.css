@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    background: url('/bg.gif') no-repeat center center fixed;
+    background-size: cover;
+  }
+ /* Hide scrollbar during animation */
+body.no-scroll {
+  overflow: hidden;
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-30px); /* Start from above */
+    opacity: 0; /* Make it invisible initially */
+  }
+  100% {
+    transform: translateY(0); /* Move to its normal position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.slide-down-text {
+  animation: slideDown 1s ease-out forwards;
+}

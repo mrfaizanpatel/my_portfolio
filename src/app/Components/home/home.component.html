@@ -1,0 +1,167 @@
+<!-- Intro Section -->
+<div *ngIf="showIntro" class="fixed inset-0 bg-black flex items-center justify-center z-50">
+  <h1 class="text-white text-4xl md:text-3xl font-semibold animate-slideDown">Welcome to Faizan Patel's Portfolio</h1>
+</div>
+<div class="flex items-start justify-between p-4">
+  <!-- Name & Role on Top Left -->
+  <div class="text-left leading-tight">
+    <h1 class="text-white text-3xl font-bold">
+      Faizan<br />
+      Patel
+    </h1>
+    <p class="text-gray-300 text-sm mt-1">
+      Software<br />
+      Engineer
+    </p>
+  </div>
+</div>
+<!-- Top-Level Badges -->
+<div class="flex flex-col items-start space-y-2 p-6">
+  <span class="text-white hover:text-green-400 cursor-pointer text-2xl font-semibold"
+    (click)="selectBadge('java')">Home</span>
+  <span class="text-white hover:text-green-400 cursor-pointer text-2xl font-semibold"
+    (click)="selectBadge('angular')">Projects</span>
+  <span class="text-white hover:text-green-400 cursor-pointer text-2xl font-semibold"
+    (click)="selectBadge('spring')">Contact</span>
+</div>
+<div *ngIf="selectedBadge === 'spring'" class="fixed top-32 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-xl p-8 bg-white/10 backdrop-blur-md rounded-xl shadow-lg text-white border border-white/20">
+  <h2 class="text-2xl font-semibold mb-4">Lets Connect !</h2>
+
+  <form (ngSubmit)="sendEmail()" #contactForm="ngForm">
+    <div class="mb-4">
+      <label for="user_email" class="block mb-1">Email</label>
+      <input type="email" id="user_email" name="user_email" [(ngModel)]="userEmail" required
+             class="w-full p-2 rounded-md bg-transparent border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+    </div>
+
+    <div class="mb-4">
+      <label for="subject" class="block mb-1">Subject</label>
+      <input type="text" id="subject" name="subject" [(ngModel)]="subject" required
+             class="w-full p-2 rounded-md bg-transparent border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+    </div>
+
+    <div class="mb-4">
+      <label for="message" class="block mb-1">Message</label>
+      <textarea id="message" name="message" rows="4" [(ngModel)]="message" required
+                class="w-full p-2 rounded-md bg-transparent border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+    </div>
+
+    <button type="submit"
+            class="mt-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-300 ease-in-out">
+      Send
+    </button>
+  </form>
+  
+</div>
+
+<div class="flex-1 p-6">
+  <!-- Java Description -->
+  <div class="absolute top-80 right-4 transform -translate-y-1/2">
+    <div
+      class="text-white text-sm max-w-xl leading-tight tracking-normal space-y-2"
+      *ngIf="selectedBadge === 'java'"
+    >
+      Born in 2001, Native with a love for basketball, family, friends, tech and innovation.
+      As a passionate developer with a keen eye for detail and a robust background in business and robust design,
+      I thrive on crafting innovative software solutions. Over the years,
+      I have honed my expertise in Java and Spring Boot and a variety of modern technologies,
+      enabling me to spearhead complex projects and mentor emerging developers.
+      My experience spans leading tech teams to success at Canopus Software Solutions,
+      K7 Codelabs, and tackling diverse freelance projects.
+      With a dedication to continuous learning and a commitment to excellence,
+      I transform ideas into scalable, efficient, and user-friendly applications.
+    </div>
+  </div>
+  <div class="flex-col  ">
+<div *ngIf="selectedBadge === 'angular'" class="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
+  <div class="flex flex-col items-end space-y-4 text-lg font-thin">
+    <span
+      class="text-white text-base max-w-xl cursor-pointer transition-transform transform hover:scale-105 hover:text-green-400"
+      [ngClass]="{ 'text-green-300': selectedSubBadge === 'home' }"
+      (click)="selectSubBadge('home')">Atta-chakki</span>
+    <span
+      class="text-white text-base max-w-xl cursor-pointer transition-transform transform hover:scale-105 hover:text-green-400"
+      [ngClass]="{ 'text-green-300': selectedSubBadge === 'projects' }"
+      (click)="selectSubBadge('projects')">Email Sender</span>
+    <span
+      class="text-white text-base max-w-xl cursor-pointer transition-transform transform hover:scale-105 hover:text-green-400"
+      [ngClass]="{ 'text-green-300': selectedSubBadge === 'contact' }"
+      (click)="selectSubBadge('contact')">Email with JWT</span>
+    <span
+      class="text-white text-base max-w-xl cursor-pointer transition-transform transform hover:scale-105 hover:text-green-400"
+      [ngClass]="{ 'text-green-300': selectedSubBadge === 'about' }"
+      (click)="selectSubBadge('about')">Apna Finance</span>
+    <span
+      class="text-white text-base max-w-xl cursor-pointer transition-transform transform hover:scale-105 hover:text-green-400"
+      [ngClass]="{ 'text-green-300': selectedSubBadge === 'skills' }"
+      (click)="selectSubBadge('skills')">Campaign</span>
+  </div>
+</div>
+<div *ngIf="selectedBadge === 'angular'" class="fixed top-8 left-32 m-4 text-white text-sm max-w-xl text-left z-50">
+  <div *ngIf="selectedSubBadge === 'home'">
+    <h1 class="text-white text-3xl font-bold mb-4">Atta Chakki</h1>
+    <span class="block mb-3">
+      A Flour Mill Billing System which helps to manage customers, flour entry, customer and flours CRUD, and only Admin (Mill Owner) handleable system. It also provides services like generating business reports per week.
+    </span>
+    <span class="block">Technologies used: Java &nbsp; Angular &nbsp; Tailwind CSS &nbsp; JavaScript</span>
+  </div>
+
+  <div *ngIf="selectedSubBadge === 'projects'">
+    <h1 class="text-white text-2xl font-semibold mb-4">Email Sender</h1>
+    <span class="block">
+      An email sender application which can be used as a contact us form in our websites.
+    </span>
+    <span class="block">Technologies used: Java &nbsp; Angular &nbsp; Tailwind CSS &nbsp; JavaScript</span>
+
+  </div>
+
+  <div *ngIf="selectedSubBadge === 'contact'">
+    <h1 class="text-white text-2xl font-semibold mb-4">Email with JWT Authentication</h1>
+    <span class="block">
+      Added a security function called JWT — only a registered person can log in and the credentials are saved into the database.
+    </span>
+    <span class="block">Technologies used: Java &nbsp; Angular &nbsp; Tailwind CSS &nbsp; JavaScript</span>
+
+  </div>
+
+  <div *ngIf="selectedSubBadge === 'about'">
+    <h1 class="text-white text-2xl font-semibold mb-4">Apna Finance</h1>
+    <span class="block">
+      A finance full-stack group project made to manage financial services.
+    </span>
+    <span class="block">Technologies used: Java &nbsp; Angular &nbsp; Tailwind CSS &nbsp; JavaScript</span>
+
+  </div>
+
+  <div *ngIf="selectedSubBadge === 'skills'">
+    <h1 class="text-white text-2xl font-semibold mb-4">Campaign: A Bulk Email Sender</h1>
+    <span class="block">
+      A full-stack campaign project which allows sending emails to multiple users at once using a CSV file or manual entry.
+    </span>
+    <span class="block">Technologies used: Java &nbsp; Angular &nbsp; Tailwind CSS &nbsp; JavaScript</span>
+
+  </div>
+</div>
+<!-- Spring Section: Contact Badges -->
+<div *ngIf="selectedBadge === 'spring'" class="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
+  <div class="flex flex-col items-center space-y-2 text-2xl font-bold">
+    <a href="https://www.linkedin.com/in/faizan-patel8464/" target="_blank"
+      class="text-white  transition duration-200 ease-in-out cursor-pointer">
+      LinkedIn
+    </a>
+    <a href="mailto:faizanpatel0143@gmail.com"
+      class="text-white transition duration-200 ease-in-out cursor-pointer">
+      Email
+    </a>
+    <a href="https://github.com/mrfaizanpatel" target="_blank"
+      class="text-white  transition duration-200 ease-in-out cursor-pointer">
+      GitHub
+    </a>
+    <a href="/assets/Faizan-Patel-Resume.pdf" target="_blank"
+      class="text-white  transition duration-200 ease-in-out cursor-pointer">
+      Resume
+    </a>
+  </div>
+</div>
+  </div>
+</div>
